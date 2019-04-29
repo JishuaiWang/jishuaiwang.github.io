@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生的就算成功。为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。    就职于某通信设备供应商担任高级软件开发工程师 热爱生活、热爱技术、不忘初心~ 看书、睡觉、听音乐…">
-<meta name="keywords" content="about">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="https://jishuaiwang.github.io/about/index.html">
+  <meta name="description" content="很多初学者在刚刚接触大数据的时候会有很多疑惑，比如对MapReduce、Storm、Spark三个计算框架的理解经常会产生混乱。哪一个适合对大量数据进行处理？哪一个又适合对实时的流数据进行处理？又该如何来区分他们呢？我对比整理了这3个计算框架的基本知识，大家可以了解一下以便对这个3个计算框架有一个整体的认识。   1. MapReduce-分布式离线计算框架主要适用于大批量的集群任务，由于是批量">
+<meta name="keywords" content="大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搞清楚Spark、Storm、MapReduce的区别">
+<meta property="og:url" content="https://jishuaiwang.github.io/2019/04/29/bd-spark-mapreduce/index.html">
 <meta property="og:site_name" content="Wang&#39;s Blog">
-<meta property="og:description" content="我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生的就算成功。为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。    就职于某通信设备供应商担任高级软件开发工程师 热爱生活、热爱技术、不忘初心~ 看书、睡觉、听音乐…">
+<meta property="og:description" content="很多初学者在刚刚接触大数据的时候会有很多疑惑，比如对MapReduce、Storm、Spark三个计算框架的理解经常会产生混乱。哪一个适合对大量数据进行处理？哪一个又适合对实时的流数据进行处理？又该如何来区分他们呢？我对比整理了这3个计算框架的基本知识，大家可以了解一下以便对这个3个计算框架有一个整体的认识。   1. MapReduce-分布式离线计算框架主要适用于大批量的集群任务，由于是批量">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T08:28:14.762Z">
+<meta property="og:updated_time" content="2019-04-29T08:28:14.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生的就算成功。为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。    就职于某通信设备供应商担任高级软件开发工程师 热爱生活、热爱技术、不忘初心~ 看书、睡觉、听音乐…">
+<meta name="twitter:title" content="搞清楚Spark、Storm、MapReduce的区别">
+<meta name="twitter:description" content="很多初学者在刚刚接触大数据的时候会有很多疑惑，比如对MapReduce、Storm、Spark三个计算框架的理解经常会产生混乱。哪一个适合对大量数据进行处理？哪一个又适合对实时的流数据进行处理？又该如何来区分他们呢？我对比整理了这3个计算框架的基本知识，大家可以了解一下以便对这个3个计算框架有一个整体的认识。   1. MapReduce-分布式离线计算框架主要适用于大批量的集群任务，由于是批量">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://jishuaiwang.github.io/about/">
+  <link rel="canonical" href="https://jishuaiwang.github.io/2019/04/29/bd-spark-mapreduce/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>关于我 | Wang's Blog</title>
+  <title>搞清楚Spark、Storm、MapReduce的区别 | Wang's Blog</title>
   
 
 
@@ -244,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -366,88 +366,289 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jishuaiwang.github.io/2019/04/29/bd-spark-mapreduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jishuai.Wang">
+      <meta itemprop="description" content="不忘初心...">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/8423786?s=400&u=1bcb74cad7fe32a04b478ed491e03af78bdb9c87&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wang's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于我
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <blockquote>
-<p>我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。<br>倘能如我所愿，我的一生的就算成功。<br>为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。</p>
+          <h1 class="post-title" itemprop="name headline">搞清楚Spark、Storm、MapReduce的区别
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-29 16:28:14" itemprop="dateCreated datePublished" datetime="2019-04-29T16:28:14+08:00">2019-04-29</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/29/bd-spark-mapreduce/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/29/bd-spark-mapreduce/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>很多初学者在刚刚接触大数据的时候会有很多疑惑，比如对MapReduce、Storm、Spark三个计算框架的理解经常会产生混乱。<br>哪一个适合对大量数据进行处理？哪一个又适合对实时的流数据进行处理？又该如何来区分他们呢？<br>我对比整理了这3个计算框架的基本知识，大家可以了解一下以便对这个3个计算框架有一个整体的认识。</p>
 </blockquote>
 <hr>
-<ul>
-<li>就职于某通信设备供应商担任高级软件开发工程师</li>
-<li>热爱生活、热爱技术、不忘初心~</li>
-<li>看书、睡觉、听音乐…</li>
-</ul>
-<hr>
+<h2 id="1-MapReduce-分布式离线计算框架"><a href="#1-MapReduce-分布式离线计算框架" class="headerlink" title="1. MapReduce-分布式离线计算框架"></a>1. MapReduce-分布式离线计算框架</h2><p>主要适用于大批量的集群任务，由于是批量执行，故时效性偏低。<br>原生支持 Java 语言开发 MapReduce ，其它语言需要使用到 Hadoop Streaming 来开发。</p>
+<h2 id="2-Spark-快速通用的计算引擎"><a href="#2-Spark-快速通用的计算引擎" class="headerlink" title="2. Spark-快速通用的计算引擎"></a>2. Spark-快速通用的计算引擎</h2><p>Spark 是专为大规模数据处理而设计的快速通用的计算引擎，其是基于内存的迭代式计算。<br>Spark 保留了MapReduce 的优点，而且在时效性上有了很大提高，从而对需要迭代计算和有较高时效性要求的系统提供了很好的支持。<br>开发人员可以通过Java、Scala或者Python等语言进行数据分析作业编写，并使用超过80种高级运算符。<br>Spark与HDFS全面兼容，同时还能与其它Hadoop组件—包括YARN以及HBase并行协作。<br>Spark可以被用于处理多种作业类型，比如实时数据分析、机器学习与图形处理。多用于能容忍小延时的推荐与计算系统。</p>
+<h2 id="3-Storm-分布式实时大数据处理系统"><a href="#3-Storm-分布式实时大数据处理系统" class="headerlink" title="3. Storm-分布式实时大数据处理系统"></a>3. Storm-分布式实时大数据处理系统</h2><p>Storm是一个分布式的、可靠的、容错的流式计算框架。<br>Storm 一开始就是为实时处理设计，因此在实时分析/性能监测等需要高时效性的领域广泛采用。<br>Storm在理论上支持所有语言，只需要少量代码即可完成适配。<br>Storm把集群的状态存在Zookeeper或者本地磁盘，所以后台进程都是无状态的（不需要保存自己的状态，都在zookeeper上），可以在不影响系统健康运行的同时失败或重启。<br>Storm可应用于–数据流处理、持续计算（持续地向客户端发送数据，它们可以实时的更新以及展现数据，比如网站指标）、分布式远程过程调用（轻松地并行化CPU密集型操作）。</p>
 
-        
-      </div>
-      
-      
       
     </div>
+
     
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/qrcode_for_gh.jpg" alt="Jishuai.Wang wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat-reward-image.jpg" alt="Jishuai.Wang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay-reward-image.jpg" alt="Jishuai.Wang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
 
 
 
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jishuai.Wang</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
     
+    <a href="https://jishuaiwang.github.io/2019/04/29/bd-spark-mapreduce/" title="搞清楚Spark、Storm、MapReduce的区别">https://jishuaiwang.github.io/2019/04/29/bd-spark-mapreduce/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
-    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/12/music-wangjie/" rel="next" title="谁明浪子心">
+                <i class="fa fa-chevron-left"></i> 谁明浪子心
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/29/music-find-lizhi/" rel="prev" title="寻找.李志">
+                寻找.李志 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -467,8 +668,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -589,6 +799,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MapReduce-分布式离线计算框架"><span class="nav-number">1.</span> <span class="nav-text">1. MapReduce-分布式离线计算框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Spark-快速通用的计算引擎"><span class="nav-number">2.</span> <span class="nav-text">2. Spark-快速通用的计算引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Storm-分布式实时大数据处理系统"><span class="nav-number">3.</span> <span class="nav-text">3. Storm-分布式实时大数据处理系统</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -800,6 +1027,8 @@
 
 
 
+
+  
 
 
   
