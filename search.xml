@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[负载均衡的实现方式]]></title>
+    <url>%2F2019%2F05%2F20%2FLoad-Balance-1%2F</url>
+    <content type="text"><![CDATA[记录一下负载均衡实现的几种方式 软件实现 Apache、Nginx、Reverse-proxy、pWEB 硬件实现F5 DNS负载均衡]]></content>
+      <categories>
+        <category>负载均衡</category>
+      </categories>
+      <tags>
+        <tag>负载均衡</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[大数据学习路线]]></title>
     <url>%2F2019%2F05%2F07%2Fbd-learning-path%2F</url>
     <content type="text"><![CDATA[大数据整体学习路线]]></content>
