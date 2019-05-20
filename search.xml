@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据库读写分离，网络访问加速策略]]></title>
+    <url>%2F2019%2F05%2F20%2Fdatebase-read-write-1%2F</url>
+    <content type="text"><![CDATA[数据库主从模式下，要实现读写分离，需要开发数据访问模块，以下记录数据访问模块实现方式。 数据访问模块实现方案 在Mybatis中开发插件,根据关键字（insert,update,select等）将sql分发到不同的数据源 mycat sharding-jdbc网络访问加速，缓存网站资源反向代理+CDN加速，CDN可以理解为各运营商各地服务器。作用： 加快用户访问响应速度 减轻后端服务器的负载压力消息队列MQ RabbitMQ ActiveMQ Kafaka]]></content>
+      <categories>
+        <category>数据访问模块</category>
+      </categories>
+      <tags>
+        <tag>数据访问模块</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[负载均衡的实现方式]]></title>
     <url>%2F2019%2F05%2F20%2FLoad-Balance-1%2F</url>
     <content type="text"><![CDATA[记录一下负载均衡实现的几种方式 软件实现 Apache、Nginx、Reverse-proxy、pWEB 硬件实现F5 DNS负载均衡]]></content>
