@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PostgresSQL 创建随机生成颜色代码函数]]></title>
+    <url>%2F2019%2F07%2F01%2Fpostgres-sql-hexcolor%2F</url>
+    <content type="text"><![CDATA[今天想渲染3D地图的时候，随机从数据库生成颜色代码用于前端渲染。自己写了函数生成颜色代码 创建函数的SQL语句如下create function hexColor() returns varchar as $$with cte1 as (select round(random()*15) as hex1, round(random()*15) as hex2, round(random()*15) as hex3, round(random()*15) as hex4, round(random()*15) as hex5, round(random()*15) as hex6),cte2 as (select case when hex1 = 10 then &#39;A&#39;when hex1 = 11 then &#39;B&#39;when hex1 = 12 then &#39;C&#39;when hex1 = 13 then &#39;D&#39;when hex1 = 14 then &#39;E&#39;when hex1 = 15 then &#39;F&#39;else &#39;F&#39; end as hex1h,case when hex2 = 10 then &#39;A&#39;when hex2 = 11 then &#39;B&#39;when hex2 = 12 then &#39;C&#39;when hex2 = 13 then &#39;D&#39;when hex2 = 14 then &#39;E&#39;when hex2 = 15 then &#39;F&#39;else &#39;F&#39; end as hex2h,case when hex3 = 10 then &#39;A&#39;when hex3 = 11 then &#39;B&#39;when hex3 = 12 then &#39;C&#39;when hex3 = 13 then &#39;D&#39;when hex3 = 14 then &#39;E&#39;when hex3 = 15 then &#39;F&#39;else &#39;F&#39; end as hex3h,case when hex4 = 10 then &#39;A&#39;when hex4 = 11 then &#39;B&#39;when hex4 = 12 then &#39;C&#39;when hex4 = 13 then &#39;D&#39;when hex4 = 14 then &#39;E&#39;when hex4 = 15 then &#39;F&#39;else &#39;F&#39; end as hex4h,case when hex5 = 10 then &#39;A&#39;when hex5 = 11 then &#39;B&#39;when hex5 = 12 then &#39;C&#39;when hex5 = 13 then &#39;D&#39;when hex5 = 14 then &#39;E&#39;when hex5 = 15 then &#39;F&#39;else &#39;F&#39; end as hex5h,case when hex6 = 10 then &#39;A&#39;when hex6 = 11 then &#39;B&#39;when hex6 = 12 then &#39;C&#39;when hex6 = 13 then &#39;D&#39;when hex6 = 14 then &#39;E&#39;when hex6 = 15 then &#39;F&#39;else &#39;F&#39; end as hex6h from cte1)select &#39;#&#39; || ltrim(hex1h) || ltrim(hex2h) || ltrim(hex3h) || ltrim(hex4h) || ltrim(hex5h) || ltrim (hex6h) from cte2;$$ LANGUAGE SQL; 调用如下update tablename set color = hexColor();]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据库读写分离，网络访问加速策略]]></title>
     <url>%2F2019%2F05%2F20%2Fdatebase-read-write-1%2F</url>
     <content type="text"><![CDATA[数据库主从模式下，要实现读写分离，需要开发数据访问模块，以下记录数据访问模块实现方式。 数据访问模块实现方案 在Mybatis中开发插件,根据关键字（insert,update,select等）将sql分发到不同的数据源 mycat sharding-jdbc网络访问加速，缓存网站资源反向代理+CDN加速，CDN可以理解为各运营商各地服务器。作用： 加快用户访问响应速度 减轻后端服务器的负载压力消息队列MQ RabbitMQ ActiveMQ Kafaka]]></content>
