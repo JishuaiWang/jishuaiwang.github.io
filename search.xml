@@ -82,7 +82,7 @@
   <entry>
     <title><![CDATA[Linux虚拟机网卡重启出现 Failed to Start LSB异常]]></title>
     <url>%2F2019%2F04%2F29%2Flinux-q1%2F</url>
-    <content type="text"><![CDATA[今天启动Linux虚拟机发现IPV4地址丢失，配置完IP后重启网卡出现 Failed to start LSB异常 解决方案(执行以下步骤) systemctl stop NetworkManager systemctl disable NetworkManager service network restart]]></content>
+    <content type="text"><![CDATA[启动Linux虚拟机发现IPV4地址丢失，配置完IP后重启网卡出现 Failed to start LSB异常 解决方案(执行以下步骤) systemctl stop NetworkManager systemctl disable NetworkManager service network restart]]></content>
       <categories>
         <category>Linux</category>
       </categories>
