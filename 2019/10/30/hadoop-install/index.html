@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Wang&#39;s Blog">
 <meta property="og:description" content="学习大数据的过程中，避免不了，需要有大数据的环境，没有，我们就需要自己动手搭建。以下内容是在安装好linux虚拟机的基础上部署Hadoop，并搭建Hadoop分布式环境。一般情况下安装好虚拟机后，需要配置网络静态IP，并设置网卡自动启动，虚拟机才能连接网络。具体设置如下： Linux设置静态IP步骤如下 先输入命令【route -n】查看路由地址并记下如果命令route提示“bash: rout">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-30T10:47:20.425Z">
+<meta property="og:updated_time" content="2019-10-30T10:48:50.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux虚拟机中搭建Hadoop分布式环境">
 <meta name="twitter:description" content="学习大数据的过程中，避免不了，需要有大数据的环境，没有，我们就需要自己动手搭建。以下内容是在安装好linux虚拟机的基础上部署Hadoop，并搭建Hadoop分布式环境。一般情况下安装好虚拟机后，需要配置网络静态IP，并设置网卡自动启动，虚拟机才能连接网络。具体设置如下： Linux设置静态IP步骤如下 先输入命令【route -n】查看路由地址并记下如果命令route提示“bash: rout">
@@ -429,7 +429,7 @@
                 
               
 
-              <time title="创建时间：2019-10-30 14:17:59 / 修改时间：18:47:20" itemprop="dateCreated datePublished" datetime="2019-10-30T14:17:59+08:00">2019-10-30</time>
+              <time title="创建时间：2019-10-30 14:17:59 / 修改时间：18:48:50" itemprop="dateCreated datePublished" datetime="2019-10-30T14:17:59+08:00">2019-10-30</time>
             
 
             
@@ -532,7 +532,7 @@
 </ol>
 <h3 id="五、更新OpenSSL"><a href="#五、更新OpenSSL" class="headerlink" title="五、更新OpenSSL"></a>五、更新OpenSSL</h3><p>CentOS自带的OpenSSL存在bug，使用如下命令进行更新：<br><code>yum update openssl</code>  </p>
 <h3 id="六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）"><a href="#六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）" class="headerlink" title="六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）"></a>六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）</h3><p>克隆三个节点的虚拟机 node01、node02、node03 然后分别开启虚拟机，配置各个虚拟机的静态IP  </p>
-<h3 id="七、配置SSH免密登录"><a href="#七、配置SSH免密登录" class="headerlink" title="七、配置SSH免密登录"></a>七、配置SSH免密登录</h3><p>1.使用sudo vi /etc/ssh/sshd_config，打开sshd_config配置文件，开放三个配置，添加到文件内容首部，如下所示：<br>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile .ssh/authorized_keys  </p>
+<h3 id="七、配置SSH免密登录-直接看第八步"><a href="#七、配置SSH免密登录-直接看第八步" class="headerlink" title="七、配置SSH免密登录(直接看第八步)"></a>七、配置SSH免密登录(直接看第八步)</h3><p>1.使用sudo vi /etc/ssh/sshd_config，打开sshd_config配置文件，开放三个配置，添加到文件内容首部，如下所示：<br>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile .ssh/authorized_keys  </p>
 <ol start="2">
 <li>重启SSHD服务<br><code>sudo service sshd restart</code>  </li>
 <li>使用如下命令生成 私钥和公钥<br><code>ssh-keygen -t rsa</code>  </li>
@@ -881,7 +881,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux设置静态IP步骤如下"><span class="nav-number">1.</span> <span class="nav-text">Linux设置静态IP步骤如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、系统主机名称修改"><span class="nav-number">2.</span> <span class="nav-text">一、系统主机名称修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载对应系统版本的JDK安装包"><span class="nav-number">3.</span> <span class="nav-text">二、下载对应系统版本的JDK安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、安装Java-JDK"><span class="nav-number">4.</span> <span class="nav-text">三、安装Java JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、关闭系统防火墙"><span class="nav-number">5.</span> <span class="nav-text">四、关闭系统防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、更新OpenSSL"><span class="nav-number">6.</span> <span class="nav-text">五、更新OpenSSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）"><span class="nav-number">7.</span> <span class="nav-text">六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、配置SSH免密登录"><span class="nav-number">8.</span> <span class="nav-text">七、配置SSH免密登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置SSH免密钥（最新）每台机器间都要设置免密登录"><span class="nav-number">9.</span> <span class="nav-text">设置SSH免密钥（最新）每台机器间都要设置免密登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、添加用户账号"><span class="nav-number">10.</span> <span class="nav-text">八、添加用户账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、-opt目录下创建文件夹"><span class="nav-number">11.</span> <span class="nav-text">九、/opt目录下创建文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、Hadoop官网上面下载Hadoop安装包，并安装。"><span class="nav-number">12.</span> <span class="nav-text">十、Hadoop官网上面下载Hadoop安装包，并安装。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux设置静态IP步骤如下"><span class="nav-number">1.</span> <span class="nav-text">Linux设置静态IP步骤如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、系统主机名称修改"><span class="nav-number">2.</span> <span class="nav-text">一、系统主机名称修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载对应系统版本的JDK安装包"><span class="nav-number">3.</span> <span class="nav-text">二、下载对应系统版本的JDK安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、安装Java-JDK"><span class="nav-number">4.</span> <span class="nav-text">三、安装Java JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、关闭系统防火墙"><span class="nav-number">5.</span> <span class="nav-text">四、关闭系统防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、更新OpenSSL"><span class="nav-number">6.</span> <span class="nav-text">五、更新OpenSSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）"><span class="nav-number">7.</span> <span class="nav-text">六、克隆配置好网络和安装好JDK的虚拟机（为Hadoop集群做准备）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、配置SSH免密登录-直接看第八步"><span class="nav-number">8.</span> <span class="nav-text">七、配置SSH免密登录(直接看第八步)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置SSH免密钥（最新）每台机器间都要设置免密登录"><span class="nav-number">9.</span> <span class="nav-text">设置SSH免密钥（最新）每台机器间都要设置免密登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、添加用户账号"><span class="nav-number">10.</span> <span class="nav-text">八、添加用户账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、-opt目录下创建文件夹"><span class="nav-number">11.</span> <span class="nav-text">九、/opt目录下创建文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、Hadoop官网上面下载Hadoop安装包，并安装。"><span class="nav-number">12.</span> <span class="nav-text">十、Hadoop官网上面下载Hadoop安装包，并安装。</span></a></li></ol></div>
             
 
           </div>
