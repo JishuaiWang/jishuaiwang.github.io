@@ -106,10 +106,12 @@
 <meta property="og:site_name" content="Wang&#39;s Blog">
 <meta property="og:description" content="学习大数据的过程中，避免不了，需要有大数据的环境，没有，我们就需要自己动手搭建。以下内容是在安装好linux虚拟机的基础上部署Hadoop，并搭建Hadoop分布式环境。一般情况下安装好虚拟机后，需要配置网络静态IP，并设置网卡自动启动，虚拟机才能连接网络。具体设置如下： Linux设置静态IP步骤如下1.先输入命令【route -n】查看路由地址并记下如果命令route提示“bash: rou">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-31T10:56:06.125Z">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop.png">
+<meta property="og:updated_time" content="2019-10-31T11:25:27.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux虚拟机中搭建Hadoop分布式环境">
 <meta name="twitter:description" content="学习大数据的过程中，避免不了，需要有大数据的环境，没有，我们就需要自己动手搭建。以下内容是在安装好linux虚拟机的基础上部署Hadoop，并搭建Hadoop分布式环境。一般情况下安装好虚拟机后，需要配置网络静态IP，并设置网卡自动启动，虚拟机才能连接网络。具体设置如下： Linux设置静态IP步骤如下1.先输入命令【route -n】查看路由地址并记下如果命令route提示“bash: rou">
+<meta name="twitter:image" content="https://jishuaiwang.github.io/images/hadoop.png">
 
 
 
@@ -446,7 +448,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-31 18:56:06" itemprop="dateModified" datetime="2019-10-31T18:56:06+08:00">2019-10-31</time>
+                <time title="修改时间：2019-10-31 19:25:27" itemprop="dateModified" datetime="2019-10-31T19:25:27+08:00">2019-10-31</time>
               
             
           </span>
@@ -607,7 +609,30 @@
 <p>11.将配置好的环境变量分发到各个节点,并逐个编译生效  source  /etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node00 module]# scp /etc/profile node01:/etc/profile</span><br><span class="line">[root@node00 module]# scp /etc/profile node02:/etc/profile</span><br><span class="line">[root@node00 module]# scp /etc/profile node03:/etc/profile</span><br></pre></td></tr></table></figure></p>
 <h3 id="十二、启动验证集群"><a href="#十二、启动验证集群" class="headerlink" title="十二、启动验证集群"></a>十二、启动验证集群</h3><p>1.启动集群，如果集群是第一次启动，需要格式化namenode<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node00 hadoop-2.9.2]# hdfs namenode -format</span><br><span class="line">出现如下信息说明成功：</span><br><span class="line">19/10/31 18:02:23 INFO common.Storage: Storage directory /opt/module/hadoop-2.9.2/data/full/tmp/dfs/name has been successfully formatted.</span><br></pre></td></tr></table></figure></p>
 <p>2.启动Hdfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@node00 hadoop-2.9.2]# start-dfs.sh </span><br><span class="line">Starting namenodes on [node00]</span><br><span class="line">node00: starting namenode, logging to /opt/module/hadoop-2.9.2/logs/hadoop-root-namenode-node00.out</span><br><span class="line">node02: starting datanode, logging to /opt/module/hadoop-2.9.2/logs/hadoop-root-datanode-node02.out</span><br><span class="line">node00: starting datanode, logging to /opt/module/hadoop-2.9.2/logs/hadoop-root-datanode-node00.out</span><br><span class="line">node01: starting datanode, logging to /opt/module/hadoop-2.9.2/logs/hadoop-root-datanode-node01.out</span><br><span class="line">node03: starting datanode, logging to /opt/module/hadoop-2.9.2/logs/hadoop-root-datanode-node03.out</span><br></pre></td></tr></table></figure></p>
-<p>3.启动Yarn：　注意：Namenode和ResourceManger如果不是同一台机器，不能在NameNode上启动 yarn，应该在ResouceManager所在的机器上启动yarn。  </p>
+<p>注：<br>我第一次启动的时候，发现每个节点的DateNode都没有启动，经查阅资料，多次格式化namenode导致的namenode与datanode之间的不一致（多次格式化，版本不一致）。导致启动失败。  </p>
+<p>解决：把Hadoop下的log和tmp文件夹删掉、Hadoopdata里面文件删除（没有Hadoopdata文件，则将Hadoop下的dfs下的data里面文件删掉）  </p>
+<p>过程：</p>
+<ol>
+<li><p>先关闭dfs：./sbin/stop-dfs.sh  </p>
+</li>
+<li><p>删除掉Hadoop下的data里面的东西  </p>
+</li>
+<li><p>删除Hadoop下的logs和temp文件夹  </p>
+</li>
+<li><p>重新进行namenode格式化：hdfs namenode format </p>
+</li>
+<li><p>重启集群：./sbin/start-dfs.sh  </p>
+</li>
+<li><p>查看进程：jps </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ jps</span><br><span class="line"></span><br><span class="line">8115 Jps</span><br><span class="line"></span><br><span class="line">7775 DataNode</span><br><span class="line"></span><br><span class="line">7681 NameNode</span><br><span class="line"></span><br><span class="line">7933 SecondaryNameNode</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.启动Yarn：　<br>注意：Namenode和ResourceManger如果不是同一台机器，不能在NameNode上启动 yarn，应该在ResouceManager所在的机器上启动yarn。<br>本次安装Namenode在node00机器上，ResourceManger 配置在 node01机器上。因此需要到node01机器上启动Yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@node01 data]# start-yarn.sh</span><br><span class="line">starting yarn daemons</span><br><span class="line">starting resourcemanager, logging to /opt/module/hadoop-2.9.2/logs/yarn-root-resourcemanager-node01.out</span><br><span class="line">node03: starting nodemanager, logging to /opt/module/hadoop-2.9.2/logs/yarn-root-nodemanager-node03.out</span><br><span class="line">node00: starting nodemanager, logging to /opt/module/hadoop-2.9.2/logs/yarn-root-nodemanager-node00.out</span><br><span class="line">node02: starting nodemanager, logging to /opt/module/hadoop-2.9.2/logs/yarn-root-nodemanager-node02.out</span><br><span class="line">node01: starting nodemanager, logging to /opt/module/hadoop-2.9.2/logs/yarn-root-nodemanager-node01.out</span><br></pre></td></tr></table></figure></p>
+<p>4.jps查看各个节点的进程<br>node00<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@node00 hadoop-2.9.2]# jps</span><br><span class="line">11872 NodeManager</span><br><span class="line">12002 Jps</span><br><span class="line">11462 NameNode</span><br><span class="line">11599 DataNode</span><br></pre></td></tr></table></figure></p>
+<p>node01<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node01 data]# jps</span><br><span class="line">9554 NodeManager</span><br><span class="line">9220 DataNode</span><br><span class="line">9895 Jps</span><br><span class="line">9450 ResourceManager</span><br><span class="line">9326 SecondaryNameNode</span><br></pre></td></tr></table></figure></p>
+<p>node02<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@node02 data]# jps</span><br><span class="line">8832 NodeManager</span><br><span class="line">8970 Jps</span><br><span class="line">8686 DataNode</span><br></pre></td></tr></table></figure></p>
+<p>node03<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@node03 logs]# jps</span><br><span class="line">8946 Jps</span><br><span class="line">8653 DataNode</span><br><span class="line">8798 NodeManager</span><br></pre></td></tr></table></figure></p>
+<p>至此，所有节点都启动成功！<br>5.登录Web查看网页<br>访问地址：<a href="http://192.168.113.129:50070/" target="_blank" rel="noopener">http://192.168.113.129:50070/</a><br><img src="/images/hadoop.png" alt></p>
 
       
     </div>
