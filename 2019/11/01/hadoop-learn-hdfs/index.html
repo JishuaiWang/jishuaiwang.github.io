@@ -98,17 +98,22 @@
 
 
 
-  <meta name="description" content="不忘初心...">
-<meta name="keywords" content="GIS、JAVA、Vue.js">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wang&#39;s Blog">
-<meta property="og:url" content="https://jishuaiwang.github.io/archives/2019/04/index.html">
+  <meta name="description" content="HDFS原理HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。    高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Ra">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFS原理及操作">
+<meta property="og:url" content="https://jishuaiwang.github.io/2019/11/01/hadoop-learn-hdfs/index.html">
 <meta property="og:site_name" content="Wang&#39;s Blog">
-<meta property="og:description" content="不忘初心...">
+<meta property="og:description" content="HDFS原理HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。    高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Ra">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hdfs.png">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hadoop-write.png">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hadoop-read.png">
+<meta property="og:updated_time" content="2019-11-01T08:34:45.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wang&#39;s Blog">
-<meta name="twitter:description" content="不忘初心...">
+<meta name="twitter:title" content="HDFS原理及操作">
+<meta name="twitter:description" content="HDFS原理HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。    高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Ra">
+<meta name="twitter:image" content="https://jishuaiwang.github.io/images/hadoop/hdfs.png">
 
 
 
@@ -116,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="https://jishuaiwang.github.io/archives/2019/04/">
+  <link rel="canonical" href="https://jishuaiwang.github.io/2019/11/01/hadoop-learn-hdfs/">
 
 
 
@@ -126,7 +131,7 @@
   };
 </script>
 
-  <title>归档 | Wang's Blog</title>
+  <title>HDFS原理及操作 | Wang's Blog</title>
   
 
 
@@ -184,7 +189,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -294,7 +299,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -365,244 +370,328 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jishuaiwang.github.io/2019/11/01/hadoop-learn-hdfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jishuai.Wang">
+      <meta itemprop="description" content="不忘初心...">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/8423786?s=400&u=1bcb74cad7fe32a04b478ed491e03af78bdb9c87&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">HDFS原理及操作
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-01 14:08:54 / 修改时间：16:34:45" itemprop="dateCreated datePublished" datetime="2019-11-01T14:08:54+08:00">2019-11-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 14 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/30/gis-leaflet-1/" itemprop="url">
+          
             
-              <span itemprop="name">Leaflet加载各类在线地图</span>
             
-          </a>
-        
-      </h2>
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/11/01/hadoop-learn-hdfs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/01/hadoop-learn-hdfs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-30T14:19:56+08:00" content="2019-04-30">
-          04-30
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/29/linux-q1/" itemprop="url">
-            
-              <span itemprop="name">Linux虚拟机网卡重启出现 Failed to Start LSB异常</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-29T16:28:55+08:00" content="2019-04-29">
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/29/music-find-lizhi/" itemprop="url">
-            
-              <span itemprop="name">寻找.李志</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-29T16:28:14+08:00" content="2019-04-29">
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <hr>
+<h3 id="HDFS原理"><a href="#HDFS原理" class="headerlink" title="HDFS原理"></a>HDFS原理</h3><p>HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。  </p>
+<ol>
+<li>高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Rack上都有备份，所以不再是单数据访问，所以速度和效率是非常快的。另外HDFS可以并行从服务器集群中读写，增加了文件读写的访问带宽。  </li>
+<li>高容错性：系统故障是不可避免的，如何做到故障之后的数据恢复和容错处理是至关重要的。HDFS通过多方面保证数据的可靠性，多份复制并且分布到物理位置的不同服务器上，数据校验功能、后台的连续自检数据一致性功能都为高容错提供了可能。  </li>
+<li>线性扩展：因为HDFS的Block信息存放到NameNode上，文件的Block分布到DataNode上，当扩充的时候仅仅添加DataNode数量，系统可以在不停止服务的情况下做扩充，不需要人工干预。  </li>
+</ol>
+<h3 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h3><p><img src="/images/hadoop/hdfs.png" alt><br>如上图所示HDFS是Master和Slave的结构，分为NameNode、Secondary NameNode和DataNode三种角色。</p>
+<p>NameNode：在Hadoop1.X中只有一个Master节点，管理HDFS的名称空间和数据块映射信息、配置副本策略和处理客户端请求；<br>Secondary NameNode：辅助NameNode，分担NameNode工作，定期合并fsimage和fsedits并推送给NameNode，紧急情况下可辅助恢复NameNode；<br>DataNode：Slave节点，实际存储数据、执行数据块的读写并汇报存储信息给NameNode；</p>
+<hr>
+<p>Block数据块;</p>
+<p>基本存储单位，一般大小为64M（配置大的块主要是因为：1）减少搜寻时间，一般硬盘传输速率比寻道时间要快，大的块可以减少寻道时间；2）减少管理块的数据开销，每个块都需要在NameNode上有对应的记录；3）对数据块进行读写，减少建立网络的连接成本）</p>
+<p>一个大文件会被拆分成一个个的块，然后存储于不同的机器。如果一个文件少于Block大小，那么实际占用的空间为其文件的大小</p>
+<p>基本的读写单位，类似于磁盘的页，每次都是读写一个块</p>
+<p>每个块都会被复制到多台机器，默认复制3份<br>NameNode</p>
+<p>存储文件的metadata，运行时所有数据都保存到内存，整个HDFS可存储的文件数受限于NameNode的内存大小</p>
+<p>一个Block在NameNode中对应一条记录（一般一个block占用150字节），如果是大量的小文件，会消耗大量内存。同时map task的数量是由splits来决定的，所以用MapReduce处理大量的小文件时，就会产生过多的map task，线程管理开销将会增加作业时间。处理大量小文件的速度远远小于处理同等大小的大文件的速度。因此Hadoop建议存储大文件</p>
+<p>数据会定时保存到本地磁盘，但不保存block的位置信息，而是由DataNode注册时上报和运行时维护（NameNode中与DataNode相关的信息并不保存到NameNode的文件系统中，而是NameNode每次重启后，动态重建）</p>
+<p>NameNode失效则整个HDFS都失效了，所以要保证NameNode的可用性<br>Secondary NameNode</p>
+<p>定时与NameNode进行同步（定期合并文件系统镜像和编辑日志，然后把合并后的传给NameNode，替换其镜像，并清空编辑日志，类似于CheckPoint机制），但NameNode失效后仍需要手工将其设置成主机<br>DataNode</p>
+<p>保存具体的block数据</p>
+<p>负责数据的读写操作和复制操作</p>
+<p>DataNode启动时会向NameNode报告当前存储的数据块信息，后续也会定时报告修改信息</p>
+<p>DataNode之间会进行通信，复制数据块，保证数据的冗余性</p>
+<h3 id="Hadoop-写文件"><a href="#Hadoop-写文件" class="headerlink" title="Hadoop 写文件"></a>Hadoop 写文件</h3><p><img src="/images/hadoop/hadoop-write.png" alt></p>
+<p>1.客户端将文件写入本地磁盘的HDFS Client文件中</p>
+<p>2.当临时文件大小达到一个block大小时，HDFS client通知NameNode，申请写入文件</p>
+<p>3.NameNode在HDFS的文件系统中创建一个文件，并把该block id和要写入的DataNode的列表返回给客户端</p>
+<p>4.客户端收到这些信息后，将临时文件写入DataNodes</p>
+<p>4.1 客户端将文件内容写入第一个DataNode（一般以4kb为单位进行传输）<br>4.2 第一个DataNode接收后，将数据写入本地磁盘，同时也传输给第二个DataNode<br>4.3 依此类推到最后一个DataNode，数据在DataNode之间是通过pipeline的方式进行复制的<br>4.4 后面的DataNode接收完数据后，都会发送一个确认给前一个DataNode，最终第一个DataNode返回确认给客户端<br>4.5 当客户端接收到整个block的确认后，会向NameNode发送一个最终的确认信息<br>4.6 如果写入某个DataNode失败，数据会继续写入其他的DataNode。然后NameNode会找另外一个好的DataNode继续复制，以保证冗余性<br>4.7 每个block都会有一个校验码，并存放到独立的文件中，以便读的时候来验证其完整性<br>5.文件写完后（客户端关闭），NameNode提交文件（这时文件才可见，如果提交前，NameNode垮掉，那文件也就丢失了。fsync：只保证数据的信息写到NameNode上，但并不保证数据已经被写到DataNode中）</p>
+<p>Rack aware（机架感知）</p>
+<p>通过配置文件指定机架名和DNS的对应关系</p>
+<p>假设复制参数是3，在写入文件时，会在本地的机架保存一份数据，然后在另外一个机架内保存两份数据（同机架内的传输速度快，从而提高性能）</p>
+<p>整个HDFS的集群，最好是负载平衡的，这样才能尽量利用集群的优势</p>
+<h3 id="Hadoop-读文件"><a href="#Hadoop-读文件" class="headerlink" title="Hadoop 读文件"></a>Hadoop 读文件</h3><p><img src="/images/hadoop/hadoop-read.png" alt></p>
+<ol>
+<li>客户端向NameNode发送读取请求</li>
+<li>NameNode返回文件的所有block和这些block所在的DataNodes（包括复制节点）</li>
+<li>客户端直接从DataNode中读取数据，如果该DataNode读取失败（DataNode失效或校验码不对），则从复制节点中读取（如果读取的数据就在本机，则直接读取，否则通过网络读取）<h3 id="Hadoop-可靠性"><a href="#Hadoop-可靠性" class="headerlink" title="Hadoop 可靠性"></a>Hadoop 可靠性</h3>HDFS - 可靠性</li>
+<li>DataNode可以失效</li>
+<li>DataNode会定时发送心跳到NameNode。如果一段时间内NameNode没有收到DataNode的心跳消息，则认为其失效。此时NameNode就会将该节点的数据（从该节点的复制节点中获取）复制到另外的DataNode中</li>
+<li>数据可以毁坏<br>无论是写入时还是硬盘本身的问题，只要数据有问题（读取时通过校验码来检测），都可以通过其他的复制节点读取，同时还会再复制一份到健康的节点中  </li>
+<li>NameNode不可靠<h3 id="HDFS中常用到的命令"><a href="#HDFS中常用到的命令" class="headerlink" title="HDFS中常用到的命令"></a>HDFS中常用到的命令</h3></li>
+<li>hadoop fs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls / </span><br><span class="line"> hadoop fs -lsr </span><br><span class="line"> hadoop fs -mkdir /user/hadoop </span><br><span class="line"> hadoop fs -put a.txt /user/hadoop/ </span><br><span class="line"> hadoop fs -get /user/hadoop/a.txt / </span><br><span class="line"> hadoop fs -cp src dst </span><br><span class="line"> hadoop fs -mv src dst </span><br><span class="line"> hadoop fs -cat /user/hadoop/a.txt </span><br><span class="line"> hadoop fs -rm /user/hadoop/a.txt </span><br><span class="line"> hadoop fs -rmr /user/hadoop/a.txt </span><br><span class="line"> hadoop fs -text /user/hadoop/a.txt </span><br><span class="line"> hadoop fs -copyFromLocal localsrc dst 与hadoop fs -put功能类似。 </span><br><span class="line"> hadoop fs -moveFromLocal localsrc dst</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/29/bd-spark-mapreduce/" itemprop="url">
-            
-              <span itemprop="name">搞清楚Spark、Storm、MapReduce的区别</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-29T16:28:14+08:00" content="2019-04-29">
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/12/music-wangjie/" itemprop="url">
-            
-              <span itemprop="name">谁明浪子心</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-12T15:48:06+08:00" content="2019-04-12">
-          04-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/qrcode_for_gh.jpg" alt="Jishuai.Wang wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat-reward-image.jpg" alt="Jishuai.Wang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay-reward-image.jpg" alt="Jishuai.Wang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jishuai.Wang</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://jishuaiwang.github.io/2019/11/01/hadoop-learn-hdfs/" title="HDFS原理及操作">https://jishuaiwang.github.io/2019/11/01/hadoop-learn-hdfs/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/30/Markdown-help/" rel="next" title="Markdown 语法帮助">
+                <i class="fa fa-chevron-left"></i> Markdown 语法帮助
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -622,8 +711,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -776,6 +874,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS原理"><span class="nav-number">1.</span> <span class="nav-text">HDFS原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS架构"><span class="nav-number">2.</span> <span class="nav-text">HDFS架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-写文件"><span class="nav-number">3.</span> <span class="nav-text">Hadoop 写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-读文件"><span class="nav-number">4.</span> <span class="nav-text">Hadoop 读文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-可靠性"><span class="nav-number">5.</span> <span class="nav-text">Hadoop 可靠性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS中常用到的命令"><span class="nav-number">6.</span> <span class="nav-text">HDFS中常用到的命令</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -941,6 +1056,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -986,6 +1105,8 @@
 
 
 
+
+  
 
 
   
