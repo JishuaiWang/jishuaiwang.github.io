@@ -107,9 +107,9 @@
 <meta property="og:description" content="HDFS原理HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。    高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Ra">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hdfs.png">
-<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hadoop-write.png">
-<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hadoop-read.png">
-<meta property="og:updated_time" content="2019-11-01T08:34:45.433Z">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hdfs-write.png">
+<meta property="og:image" content="https://jishuaiwang.github.io/images/hadoop/hdfs-read.png">
+<meta property="og:updated_time" content="2019-11-01T08:40:49.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS原理及操作">
 <meta name="twitter:description" content="HDFS原理HDFS（Hadoop Distributed File System）是一个分布式文件系统。它具有高容错性并提供了高吞吐量的数据访问，非常适合大规模数据集上的应用，它提供了一个高度容错性和高吞吐量的海量数据存储解决方案。    高吞吐量访问：HDFS的每个Block分布在不同的Rack上，在用户访问时，HDFS会计算使用最近和访问量最小的服务器给用户提供。由于Block在不同的Ra">
@@ -433,7 +433,7 @@
                 
               
 
-              <time title="创建时间：2019-11-01 14:08:54 / 修改时间：16:34:45" itemprop="dateCreated datePublished" datetime="2019-11-01T14:08:54+08:00">2019-11-01</time>
+              <time title="创建时间：2019-11-01 14:08:54 / 修改时间：16:40:49" itemprop="dateCreated datePublished" datetime="2019-11-01T14:08:54+08:00">2019-11-01</time>
             
 
             
@@ -534,7 +534,7 @@
 <p>负责数据的读写操作和复制操作</p>
 <p>DataNode启动时会向NameNode报告当前存储的数据块信息，后续也会定时报告修改信息</p>
 <p>DataNode之间会进行通信，复制数据块，保证数据的冗余性</p>
-<h3 id="Hadoop-写文件"><a href="#Hadoop-写文件" class="headerlink" title="Hadoop 写文件"></a>Hadoop 写文件</h3><p><img src="/images/hadoop/hadoop-write.png" alt></p>
+<h3 id="Hadoop-写文件"><a href="#Hadoop-写文件" class="headerlink" title="Hadoop 写文件"></a>Hadoop 写文件</h3><p><img src="/images/hadoop/hdfs-write.png" alt></p>
 <p>1.客户端将文件写入本地磁盘的HDFS Client文件中</p>
 <p>2.当临时文件大小达到一个block大小时，HDFS client通知NameNode，申请写入文件</p>
 <p>3.NameNode在HDFS的文件系统中创建一个文件，并把该block id和要写入的DataNode的列表返回给客户端</p>
@@ -544,7 +544,7 @@
 <p>通过配置文件指定机架名和DNS的对应关系</p>
 <p>假设复制参数是3，在写入文件时，会在本地的机架保存一份数据，然后在另外一个机架内保存两份数据（同机架内的传输速度快，从而提高性能）</p>
 <p>整个HDFS的集群，最好是负载平衡的，这样才能尽量利用集群的优势</p>
-<h3 id="Hadoop-读文件"><a href="#Hadoop-读文件" class="headerlink" title="Hadoop 读文件"></a>Hadoop 读文件</h3><p><img src="/images/hadoop/hadoop-read.png" alt></p>
+<h3 id="Hadoop-读文件"><a href="#Hadoop-读文件" class="headerlink" title="Hadoop 读文件"></a>Hadoop 读文件</h3><p><img src="/images/hadoop/hdfs-read.png" alt></p>
 <ol>
 <li>客户端向NameNode发送读取请求</li>
 <li>NameNode返回文件的所有block和这些block所在的DataNodes（包括复制节点）</li>
